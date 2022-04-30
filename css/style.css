@@ -5,6 +5,9 @@
     --button-4-color: orange;
     --button-5-color: blue;
     --button-6-color: sienna;
+    --verification-correct: green;
+    --verification-misplaced: yellow;
+    --verification-wrong: red;
 }
 
 body {
@@ -48,7 +51,7 @@ body {
     transform: scale(1.1);
 }
 
-#verification > .round {
+.verification > .round {
     width: 2em;
     height: 2em;
 }
@@ -75,4 +78,16 @@ body {
 
 .button-6 {
     background-color: var(--button-6-color);
+}
+
+.verification-correct {
+    background-color: var(--verification-correct);
+}
+
+.verification-misplaced {
+    background-color: var(--verification-misplaced);
+}
+
+.verification-wrong {
+    background-color: var(--verification-wrong);
 }

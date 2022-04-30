@@ -15,19 +15,20 @@
             <h1 id="title">CODEBREAKER - CAN YOU FIND THE CODE?</h1>
 
             <div id="solution" class="mb-5">
-                <td><input type="text" class="round text-center" disabled value="?"></input></td>
-                <td><input type="text" class="round text-center" disabled value="?"></input></td>
-                <td><input type="text" class="round text-center" disabled value="?"></input></td>
-                <td><input type="text" class="round text-center" disabled value="?"></input></td>
+                <input type="text" class="round text-center solution-field" disabled value="?"></input>
+                <input type="text" class="round text-center solution-field" disabled value="?"></input>
+                <input type="text" class="round text-center solution-field" disabled value="?"></input>
+                <input type="text" class="round text-center solution-field" disabled value="?"></input>
+                <button class="btn btn-success d-none" id="replay-button" onclick="replay()">Play Again</button>
             </div>
 
             <div id="controls">
-                <button class="round button-1">1</button>
-                <button class="round button-2">2</button>
-                <button class="round button-3">3</button>
-                <button class="round button-4">4</button>
-                <button class="round button-5">5</button>
-                <button class="round button-6">6</button>
+                <button class="round button-1" id="button-1" onclick="fillAnswer(this)">1</button>
+                <button class="round button-2" id="button-2" onclick="fillAnswer(this)">2</button>
+                <button class="round button-3" id="button-3" onclick="fillAnswer(this)">3</button>
+                <button class="round button-4" id="button-4" onclick="fillAnswer(this)">4</button>
+                <button class="round button-5" id="button-5" onclick="fillAnswer(this)">5</button>
+                <button class="round button-6" id="button-6" onclick="fillAnswer(this)">6</button>
             </div>
 
             <div class="attempts mt-5">
@@ -37,17 +38,95 @@
                             <th colspan="8" id="table-title">ATTEMPTS</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td><input type="text" class="round text-center" disabled></input></td>
-                            <td><input type="text" class="round text-center" disabled></input></td>
-                            <td><input type="text" class="round text-center" disabled></input></td>
-                            <td><input type="text" class="round text-center" disabled></input></td>
-                            <td id="verification">
-                                <input type="text" class="round text-center" disabled></input>
-                                <input type="text" class="round text-center" disabled></input>
-                                <input type="text" class="round text-center" disabled></input>
-                                <input type="text" class="round text-center" disabled></input>
+                    <tbody id="table-body">
+                        <tr id="row-1">
+                            <!-- Attempts -->
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><button class="btn btn-primary button-verify-1" onclick="checkAnswer(this, 'verification-1')">Verify</button></td>
+                            <!-- Verification -->
+                            <td class="verification">
+                                <input type="text" class="round text-center verification-1" disabled></input>
+                                <input type="text" class="round text-center verification-1" disabled></input>
+                                <input type="text" class="round text-center verification-1" disabled></input>
+                                <input type="text" class="round text-center verification-1" disabled></input>
+                            </td>
+                        </tr>
+                        <tr id="row-2">
+                            <!-- Attempts -->
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><button class="btn btn-primary button-verify-2" onclick="checkAnswer(this, 'verification-2')">Verify</button></td>
+                            <!-- Verification -->
+                            <td class="verification">
+                                <input type="text" class="round text-center verification-2" disabled></input>
+                                <input type="text" class="round text-center verification-2" disabled></input>
+                                <input type="text" class="round text-center verification-2" disabled></input>
+                                <input type="text" class="round text-center verification-2" disabled></input>
+                            </td>
+                        </tr>
+                        <tr id="row-3">
+                            <!-- Attempts -->
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><button class="btn btn-primary button-verify-3" onclick="checkAnswer(this, 'verification-3')">Verify</button></td>
+                            <!-- Verification -->
+                            <td class="verification">
+                                <input type="text" class="round text-center verification-3" disabled></input>
+                                <input type="text" class="round text-center verification-3" disabled></input>
+                                <input type="text" class="round text-center verification-3" disabled></input>
+                                <input type="text" class="round text-center verification-3" disabled></input>
+                            </td>
+                        </tr>
+                        <tr id="row-4">
+                            <!-- Attempts -->
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><button class="btn btn-primary button-verify-4" onclick="checkAnswer(this, 'verification-4')">Verify</button></td>
+                            <!-- Verification -->
+                            <td class="verification">
+                                <input type="text" class="round text-center verification-4" disabled></input>
+                                <input type="text" class="round text-center verification-4" disabled></input>
+                                <input type="text" class="round text-center verification-4" disabled></input>
+                                <input type="text" class="round text-center verification-4" disabled></input>
+                            </td>
+                        </tr>
+                        <tr id="row-5">
+                            <!-- Attempts -->
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><button class="btn btn-primary button-verify-5" onclick="checkAnswer(this, 'verification-5')">Verify</button></td>
+                            <!-- Verification -->
+                            <td class="verification">
+                                <input type="text" class="round text-center verification-5" disabled></input>
+                                <input type="text" class="round text-center verification-5" disabled></input>
+                                <input type="text" class="round text-center verification-5" disabled></input>
+                                <input type="text" class="round text-center verification-5" disabled></input>
+                            </td>
+                        </tr>
+                        <tr id="row-6">
+                            <!-- Attempts -->
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                            <td><button class="btn btn-primary button-verify-6" onclick="checkAnswer(this, 'verification-6')">Verify</button></td>
+                            <!-- Verification -->
+                            <td class="verification">
+                                <input type="text" class="round text-center verification-6" disabled></input>
+                                <input type="text" class="round text-center verification-6" disabled></input>
+                                <input type="text" class="round text-center verification-6" disabled></input>
+                                <input type="text" class="round text-center verification-6" disabled></input>
                             </td>
                         </tr>
                     </tbody>
@@ -55,8 +134,13 @@
             </div>
         </div>
 
+        <script src="js/sweetalert2.js"></script>
         <script src="js/script.js"></script>
         <script>
+            var currentAttempt = 1;
+            var currentRow = document.getElementById('row-' + currentAttempt);
+            var currentAnswer = [];
+            var solution = generateSolution();
         </script>
     </body>
 </html>
