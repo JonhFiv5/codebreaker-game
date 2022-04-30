@@ -7,16 +7,56 @@
         <title>Codebreaker</title>
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/style.css">
     </head>
     <body>
 
         <div class="container">
-            <h1>Hello</h1>
+            <h1 id="title">CODEBREAKER - CAN YOU FIND THE CODE?</h1>
+
+            <div id="solution" class="mb-5">
+                <td><input type="text" class="round text-center" disabled value="?"></input></td>
+                <td><input type="text" class="round text-center" disabled value="?"></input></td>
+                <td><input type="text" class="round text-center" disabled value="?"></input></td>
+                <td><input type="text" class="round text-center" disabled value="?"></input></td>
+            </div>
+
+            <div id="controls">
+                <button class="round button-1">1</button>
+                <button class="round button-2">2</button>
+                <button class="round button-3">3</button>
+                <button class="round button-4">4</button>
+                <button class="round button-5">5</button>
+                <button class="round button-6">6</button>
+            </div>
+
+            <div class="attempts mt-5">
+                <table id="attempts-table" class="table table-striped text-center align-middle">
+                    <thead>
+                        <tr>
+                            <th colspan="8" id="table-title">ATTEMPTS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text" class="round text-center" disabled></input></td>
+                            <td><input type="text" class="round text-center" disabled></input></td>
+                            <td><input type="text" class="round text-center" disabled></input></td>
+                            <td><input type="text" class="round text-center" disabled></input></td>
+                            <td id="verification">
+                                <input type="text" class="round text-center" disabled></input>
+                                <input type="text" class="round text-center" disabled></input>
+                                <input type="text" class="round text-center" disabled></input>
+                                <input type="text" class="round text-center" disabled></input>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
 
         <script src="js/script.js"></script>
         <script>
-            hello();
         </script>
     </body>
 </html>

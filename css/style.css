@@ -1,0 +1,78 @@
+:root {
+    --button-1-color: red;
+    --button-2-color: green;
+    --button-3-color: purple;
+    --button-4-color: orange;
+    --button-5-color: blue;
+    --button-6-color: sienna;
+}
+
+body {
+    background: rgb(139, 202, 253);
+}
+
+#title {
+    font-size: 3em;
+    color: black;
+    text-shadow: 2px 2px red;
+}
+
+#table-title {
+    font-size: 2em;
+    color: black;
+}
+
+#solution > .round {
+    color: black;
+}
+
+.round {
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: small;
+    border: none;
+    width: 5em;
+    height: 5em;
+    opacity: 70%;
+    margin-right: 2em;
+    color: white;
+    border: 2px solid black;
+}
+
+#controls > button:hover {
+    opacity: 100%;
+    transform: scale(1.2);
+}
+
+#controls > button:active {
+    transform: scale(1.1);
+}
+
+#verification > .round {
+    width: 2em;
+    height: 2em;
+}
+
+.button-1 {
+    background-color: var(--button-1-color);
+}
+
+.button-2 {
+    background-color: var(--button-2-color);
+}
+
+.button-3 {
+    background-color: var(--button-3-color);
+}
+
+.button-4 {
+    background-color: var(--button-4-color);
+}
+
+.button-5 {
+    background-color: var(--button-5-color);
+}
+
+.button-6 {
+    background-color: var(--button-6-color);
+}
