@@ -20,7 +20,13 @@
                 <input type="text" class="round text-center solution-field" disabled value="?"></input>
                 <input type="text" class="round text-center solution-field" disabled value="?"></input>
                 <button class="btn btn-success d-none" id="replay-button" onclick="replay()">Play Again</button>
+                <div id="config" class="d-inline float-end">
+                    <label for="shuffle-hints">Shuffle hints</label>
+                    <input type="checkbox" id="shuffle-hints">
+                    <button class="btn btn-outline-dark" onclick="showExplanation('shuffle-hints')">?</button>
+                </div>
             </div>
+
 
             <div id="controls">
                 <button class="round button-1" id="button-1" onclick="fillAnswer(this)">1</button>
@@ -35,7 +41,8 @@
                 <table id="attempts-table" class="table table-striped text-center align-middle">
                     <thead>
                         <tr>
-                            <th colspan="8" id="table-title">ATTEMPTS</th>
+                            <th colspan="4" class="table-title">ATTEMPTS</th>
+                            <th colspan="4" class="table-title">HINTS</th>
                         </tr>
                     </thead>
                     <tbody id="table-body">
@@ -49,7 +56,7 @@
         <script src="js/script.js"></script>
         <script>
             var currentAttempt = 1;
-            var attemptLimit = 4;
+            var attemptLimit = 10;
 
             let tableBody = document.getElementById('table-body');
             populateAttemptsTable(tableBody, attemptLimit);

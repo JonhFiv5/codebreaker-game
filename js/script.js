@@ -1,11 +1,17 @@
+function shuffleList(list, maxSize=list.length) {
+    let shuffledList = [];
+
+    for(let i = 0; i < maxSize; i++) {
+        let position = Math.floor(Math.random() * list.length);
+        shuffledList.push(list.splice(position, 1)[0]);
+    }
+
+    return shuffledList;
+}
+
 function generateSolution() {
     let controls = [1, 2, 3, 4, 5, 6];
-    let solution = [];
-
-    for(let i = 0; i < 4; i++) {
-        let position = Math.floor(Math.random() * controls.length);
-        solution.push(controls.splice(position, 1)[0]);
-    }
+    let solution = shuffleList(controls, 4);
 
     return solution;
 
@@ -19,7 +25,6 @@ function populateAttemptsTable(tableBody, totalAttempts) {
                 <td><input type="text" class="round text-center answer empty" disabled></input></td>
                 <td><input type="text" class="round text-center answer empty" disabled></input></td>
                 <td><input type="text" class="round text-center answer empty" disabled></input></td>
-                <td><button class="btn btn-primary button-verify-${i}" onclick="checkAnswer(this, 'verification-${i}')">Verify</button></td>
                 <td class="verification">
                     <input type="text" class="round text-center verification-${i}" disabled></input>
                     <input type="text" class="round text-center verification-${i}" disabled></input> 
@@ -46,47 +51,47 @@ function fillAnswer(control) {
             result.classList.remove('empty');
 
             currentAnswer.push(controlValue);
+            if(currentAnswer.length == solution.length) {
+                checkAnswer('verification-' + currentAttempt);
+            }
             break;
         }
 
     }
+
 }
 
-function checkAnswer(button, verificationClass) {
-
-    if(!button.classList.contains('button-verify-' + currentAttempt)){
-        return false;
-    }
-
-    if (currentAnswer.length < solution.length) {
-        Swal.fire({
-            'icon': 'error',
-            'text': 'You must fill all the fields!'
-        });
-
-        return false;
-    }
-
-    button.style.display = 'none';
+function checkAnswer(currentVerificationClass) {
 
     let correct = 'verification-correct';
     let misplaced = 'verification-misplaced';
     let wrong = 'verification-wrong';
 
-    let verificationPresentationInputs = document.getElementsByClassName(verificationClass);
-
+    let verificationPresentationInputs = document.getElementsByClassName(currentVerificationClass);
     let allCorrect = true;
 
+    let verificationResult = [];
+
+    // verificationPresentationInputs[i].classList.add(correct);
     for(let i = 0; i < solution.length; i++) {
         if (solution[i] == currentAnswer[i]) {
-            verificationPresentationInputs[i].classList.add(correct);
+            verificationResult.push(correct);
         } else if(solution.includes(currentAnswer[i])) {
-            verificationPresentationInputs[i].classList.add(misplaced);
+            verificationResult.push(misplaced);
             allCorrect = false;
         } else {
-            verificationPresentationInputs[i].classList.add(wrong);
+            verificationResult.push(wrong);
             allCorrect = false;
         }
+    }
+
+    let shuffleHints = document.getElementById('shuffle-hints').checked;
+    if(shuffleHints) {
+        verificationResult = shuffleList(verificationResult);
+    }
+
+    for(let i = 0; i < verificationResult.length; i++) {
+        verificationPresentationInputs[i].classList.add(verificationResult[i]);
     }
 
     if (allCorrect) {
@@ -141,4 +146,18 @@ function revealSolution() {
 
 function replay() {
     window.location.reload();
+}
+
+function showExplanation(about) {
+
+    let message = '';
+
+    if(about == 'shuffle-hints') {
+        message = 'If you enable this option, the hints will no longer match the order of the numbers. This will make the game more challenging.';
+    }
+
+    Swal.fire({
+        'icon': 'question',
+        'text': message,
+    });
 }

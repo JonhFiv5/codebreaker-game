@@ -17,10 +17,10 @@ body {
 #title {
     font-size: 3em;
     color: black;
-    text-shadow: 2px 2px red;
+    text-shadow: 2px 2px white;
 }
 
-#table-title {
+.table-title {
     font-size: 2em;
     color: black;
 }
@@ -37,9 +37,18 @@ body {
     width: 5em;
     height: 5em;
     opacity: 70%;
-    margin-right: 2em;
     color: white;
     border: 2px solid black;
+}
+
+#controls {
+    position: fixed;
+    left: 1.3em;
+}
+
+#controls button {
+    display: block;
+    margin-bottom: 1em;
 }
 
 #controls > button:hover {
@@ -49,6 +58,20 @@ body {
 
 #controls > button:active {
     transform: scale(1.1);
+}
+
+#config {
+    padding: 0.7em;
+    border: 2px solid;
+}
+
+#config > label {
+    font-size: 1.3em;
+}
+
+#config > input {
+    height: 1em;
+    width: 1em;
 }
 
 .verification > .round {
