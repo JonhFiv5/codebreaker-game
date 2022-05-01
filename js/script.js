@@ -121,9 +121,11 @@ function revealSolution() {
     if(winner) {
         icon = 'success';
         message = 'YOU DID IT!';
+        document.body.style.background = '#66d478';
     } else {
         icon = 'error';
         message = 'Wrong Answer! Game Over...';
+        document.body.style.background = '#d47a66';
     }
 
     Swal.fire({
