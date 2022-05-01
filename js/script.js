@@ -1,5 +1,3 @@
-// const { Swal } = require("./sweetalert2.js");
-
 function generateSolution() {
     let controls = [1, 2, 3, 4, 5, 6];
     let solution = [];
@@ -11,6 +9,27 @@ function generateSolution() {
 
     return solution;
 
+}
+
+function populateAttemptsTable(tableBody, totalAttempts) {
+    let tableContent = "";
+    for(let i = 1; i <= totalAttempts; i++) {
+        tableContent += `<tr id="row-${i}">
+                <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                <td><input type="text" class="round text-center answer empty" disabled></input></td>
+                <td><button class="btn btn-primary button-verify-${i}" onclick="checkAnswer(this, 'verification-${i}')">Verify</button></td>
+                <td class="verification">
+                    <input type="text" class="round text-center verification-${i}" disabled></input>
+                    <input type="text" class="round text-center verification-${i}" disabled></input> 
+                    <input type="text" class="round text-center verification-${i}" disabled></input>
+                    <input type="text" class="round text-center verification-${i}" disabled></input>
+                </td>
+            </tr>`;
+    }
+
+    tableBody.innerHTML = tableContent;
 }
 
 function fillAnswer(control) {
