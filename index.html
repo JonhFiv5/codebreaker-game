@@ -138,9 +138,11 @@
         <script src="js/script.js"></script>
         <script>
             var currentAttempt = 1;
+            var attemptLimit = 6;
             var currentRow = document.getElementById('row-' + currentAttempt);
             var currentAnswer = [];
             var solution = generateSolution();
+            var winner = false;
         </script>
     </body>
 </html>

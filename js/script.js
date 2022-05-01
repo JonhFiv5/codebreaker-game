@@ -71,11 +71,17 @@ function checkAnswer(button, verificationClass) {
     }
 
     if (allCorrect) {
+        winner = true;
         revealSolution();
     } else {
-        currentAttempt += 1;
-        currentAnswer = [];
-        currentRow = document.getElementById('row-' + currentAttempt);
+        if (currentAttempt == attemptLimit) {
+            winner = false;
+            revealSolution();
+        } else {
+            currentAttempt += 1;
+            currentAnswer = [];
+            currentRow = document.getElementById('row-' + currentAttempt);
+        }
     }
 
 }
@@ -90,9 +96,20 @@ function revealSolution() {
         solutionPresentationInputs[i].style.color = 'white';
     }
 
+    let icon = '';
+    let message = '';
+
+    if(winner) {
+        icon = 'success';
+        message = 'YOU DID IT!';
+    } else {
+        icon = 'error';
+        message = 'Wrong Answer! Game Over...';
+    }
+
     Swal.fire({
-        'icon': 'success',
-        'text': 'YOU DID IT!',
+        'icon': icon,
+        'text': message,
         'timer': 2000,
         'showConfirmButton': false,
     });
