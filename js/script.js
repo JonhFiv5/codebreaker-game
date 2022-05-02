@@ -105,6 +105,8 @@ function checkAnswer(currentVerificationClass) {
             currentAttempt += 1;
             currentAnswer = [];
             currentRow = document.getElementById('row-' + currentAttempt);
+            let audio = new Audio('assets/wrong.mp3');
+            audio.play();
         }
     }
 
@@ -127,10 +129,14 @@ function revealSolution() {
         icon = 'success';
         message = 'YOU DID IT!';
         document.body.style.background = '#66d478';
+        let audio = new Audio('assets/victory.mp3');
+        audio.play();
     } else {
         icon = 'error';
         message = 'Wrong Answer! Game Over...';
         document.body.style.background = '#d47a66';
+        let audio = new Audio('assets/game-over.mp3');
+        audio.play();
     }
 
     Swal.fire({
@@ -142,6 +148,7 @@ function revealSolution() {
 
     let replayButton = document.getElementById('replay-button');
     replayButton.classList.remove('d-none');
+    document.location.href = '#title';
 }
 
 function replay() {
