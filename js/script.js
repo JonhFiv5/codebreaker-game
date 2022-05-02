@@ -148,16 +148,22 @@ function replay() {
     window.location.reload();
 }
 
-function showExplanation(about) {
+function showExplanation(subject) {
 
     let message = '';
 
-    if(about == 'shuffle-hints') {
+    if(subject == 'shuffle-hints') {
         message = 'If you enable this option, the hints will no longer match the order of the numbers. This will make the game more challenging.';
+    } else if(subject == 'hints-colors') {
+        message = `
+            <div class="verification"><input type="text" class="round text-center verification-correct" disabled></input> -> The number and its position are correct</div>
+            <div class="verification"><input type="text" class="round text-center verification-misplaced" disabled></input> -> The number is correct but it is in the wrong place</div>
+            <div class="verification"><input type="text" class="round text-center verification-wrong" disabled></input> -> The number is wrong</div>
+        `;
     }
 
     Swal.fire({
         'icon': 'question',
-        'text': message,
+        'html': message,
     });
 }
